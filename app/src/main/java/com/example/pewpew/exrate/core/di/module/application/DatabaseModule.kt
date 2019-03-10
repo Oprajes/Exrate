@@ -1,4 +1,4 @@
-package com.example.pewpew.exrate.core.di.module
+package com.example.pewpew.exrate.core.di.module.application
 
 import android.content.Context
 import androidx.room.Room

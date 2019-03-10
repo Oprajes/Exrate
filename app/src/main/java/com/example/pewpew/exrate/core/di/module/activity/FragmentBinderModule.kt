@@ -1,5 +1,6 @@
-package com.example.pewpew.exrate.core.di.module
+package com.example.pewpew.exrate.core.di.module.activity
 
+import com.example.pewpew.exrate.core.di.module.fragment.SettingsFragmentModule
 import com.example.pewpew.exrate.core.di.scope.FragmentScope
 import com.example.pewpew.exrate.features.exchangerates.view.ListFragment
 import com.example.pewpew.exrate.features.exchangerates.view.SettingsFragment

@@ -5,7 +5,7 @@ import com.example.pewpew.exrate.features.exchangerates.NbrbApi
 import com.example.pewpew.exrate.features.exchangerates.model.Currency
 import com.example.pewpew.exrate.features.exchangerates.model.CurrencyEntity
 import com.example.pewpew.exrate.features.exchangerates.utils.CalendarHelper
-import com.example.pewpew.exrate.features.exchangerates.utils.toApiDate
+import com.example.pewpew.exrate.features.exchangerates.utils.toApiDateFormat
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -15,11 +15,11 @@ class Network
                     private val database: DatabaseInterface): NetworkInterface {
 
     override fun getCurrencies(): Single<List<Currency>> =
-        nbrbApi.getExchangeRates(CalendarHelper.today.toApiDate())
+        nbrbApi.getExchangeRates(CalendarHelper.today.toApiDateFormat())
             .flatMap { todayList ->
-                nbrbApi.getExchangeRates(CalendarHelper.tomorrow.toApiDate())
+                nbrbApi.getExchangeRates(CalendarHelper.tomorrow.toApiDateFormat())
                     .flatMap { tomorrowList ->
-                        nbrbApi.getExchangeRates(CalendarHelper.yesterday.toApiDate())
+                        nbrbApi.getExchangeRates(CalendarHelper.yesterday.toApiDateFormat())
                             .map { yesterdayList ->
                                 if(tomorrowList.isNotEmpty()) {
                                     CalendarHelper.firstDate = CalendarHelper.today

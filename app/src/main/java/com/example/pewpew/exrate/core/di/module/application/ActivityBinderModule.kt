@@ -1,6 +1,7 @@
-package com.example.pewpew.exrate.core.di.module
+package com.example.pewpew.exrate.core.di.module.application
 
 import com.example.pewpew.exrate.core.MainActivity
+import com.example.pewpew.exrate.core.di.module.activity.FragmentBinderModule
 import com.example.pewpew.exrate.core.di.scope.ActivityScope
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

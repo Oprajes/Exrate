@@ -16,7 +16,7 @@ import com.example.pewpew.exrate.core.MainActivity
 import com.example.pewpew.exrate.core.di.viewmodel.ViewModelFactory
 import com.example.pewpew.exrate.features.exchangerates.CurrencySettingsAdapter
 import com.example.pewpew.exrate.features.exchangerates.model.Currency
-import com.example.pewpew.exrate.features.exchangerates.viewmodel.CurrencyViewModel
+import com.example.pewpew.exrate.features.exchangerates.viewmodel.SettingsViewModel
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_settings.*
 import javax.inject.Inject
@@ -28,8 +28,8 @@ class SettingsFragment : Fragment() {
     @Inject lateinit var itemTouchHelper: ItemTouchHelper
 
     private val fragmentStack: FragmentStack by lazy { activity as MainActivity }
-    private val viewModel: CurrencyViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(CurrencyViewModel::class.java)
+    private val viewModel: SettingsViewModel by lazy {
+        ViewModelProviders.of(this, viewModelFactory).get(SettingsViewModel::class.java)
     }
 
     override fun onAttach(context: Context?) {

@@ -1,4 +1,4 @@
-package com.example.pewpew.exrate.core.di.module
+package com.example.pewpew.exrate.core.di.module.application
 
 import com.example.pewpew.exrate.core.di.scope.ApplicationScope
 import com.example.pewpew.exrate.features.exchangerates.NbrbApi

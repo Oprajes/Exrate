@@ -12,6 +12,6 @@ object CalendarHelper {
     var secondDate: Date? = null
 }
 
-fun Date.toApiDate(): String = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(this)
+fun Date.toApiDateFormat(): String = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(this)
 
-fun Date.toViewDate(): String = SimpleDateFormat("dd.MM.yy", Locale.US).format(this)
+fun Date.toViewDateFormat(): String = SimpleDateFormat("dd.MM.yy", Locale.US).format(this)

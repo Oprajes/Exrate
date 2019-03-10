@@ -16,7 +16,7 @@ import com.example.pewpew.exrate.core.di.viewmodel.ViewModelFactory
 import com.example.pewpew.exrate.features.exchangerates.CurrencyAdapter
 import com.example.pewpew.exrate.features.exchangerates.model.Currency
 import com.example.pewpew.exrate.features.exchangerates.utils.CalendarHelper
-import com.example.pewpew.exrate.features.exchangerates.utils.toViewDate
+import com.example.pewpew.exrate.features.exchangerates.utils.toViewDateFormat
 import com.example.pewpew.exrate.features.exchangerates.viewmodel.CurrencyViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.AndroidSupportInjection
@@ -37,6 +37,12 @@ class ListFragment : Fragment() {
         super.onAttach(context)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if(savedInstanceState == null)
+            viewModel.loadData()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,11 +52,9 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initViews()
-        if(savedInstanceState == null)
-            viewModel.loadData()
-        else
-            viewModel.getShownCurrencies()
-        viewModel.shownCurrencies.observe(this, Observer(this::showData))
+        if(viewModel.isDataLoaded)
+            viewModel.getCurrencies()
+        viewModel.currencies.observe(this, Observer(this::showData))
         viewModel.isLoading.observe(this, Observer(this::showLoading))
         viewModel.errorMessage.observe(this, Observer(this::showError))
     }
@@ -76,12 +80,18 @@ class ListFragment : Fragment() {
 
     private fun showData(collection: List<Currency>){
         currencyAdapter.collection = collection
-        firstDate.text = CalendarHelper.firstDate?.toViewDate()
-        secondDate.text = CalendarHelper.secondDate?.toViewDate()
+        firstDate.text = CalendarHelper.firstDate?.toViewDateFormat()
+        secondDate.text = CalendarHelper.secondDate?.toViewDateFormat()
     }
 
     private fun showLoading(isLoading: Boolean){
-        progressBar.visibility = if(isLoading) View.VISIBLE else View.INVISIBLE
+        if(isLoading){
+            visibleGroup.visibility = View.INVISIBLE
+            progressBar.visibility = View.VISIBLE
+        } else {
+            progressBar.visibility = View.INVISIBLE
+            visibleGroup.visibility = View.VISIBLE
+        }
     }
 
     private fun showError(errorMessage: String){

@@ -1,7 +1,7 @@
 package com.example.pewpew.exrate.core.di.component
 
 import com.example.pewpew.exrate.AndroidApplication
-import com.example.pewpew.exrate.core.di.module.*
+import com.example.pewpew.exrate.core.di.module.application.*
 import com.example.pewpew.exrate.core.di.scope.ApplicationScope
 import dagger.Component
 import dagger.android.AndroidInjector

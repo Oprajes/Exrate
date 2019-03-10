@@ -1,4 +1,4 @@
-package com.example.pewpew.exrate.core.di.module
+package com.example.pewpew.exrate.core.di.module.fragment
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.pewpew.exrate.core.di.scope.FragmentScope
