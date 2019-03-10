@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ExRate</string>
+
+    <string name="currency_name">%1$d %2$s</string>
+    <string name="currency_rate">%1$.4f</string>
+
+    <string name="settings">settings</string>
+    <string name="save_settings">save</string>
+
+    <string name="fragment_list_title">Курсы валют</string>
+    <string name="fragment_settings_title">Настройка валют</string>
+</resources>
